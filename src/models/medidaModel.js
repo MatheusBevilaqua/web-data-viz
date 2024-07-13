@@ -1,15 +1,23 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas() {
 
     var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+
+    (SELECT count(score) FROM Quiz 
+    WHERE score = 0)as zero,
+    
+    (SELECT count(score) FROM Quiz
+    WHERE score = 1)as um,
+    
+    (SELECT count(score) FROM Quiz 
+    WHERE score = 2)as dois,
+    
+    (SELECT count(score) FROM Quiz 
+    WHERE score = 3)as tres,
+    
+    (SELECT count(score) FROM Quiz 
+    WHERE score = 4)as quatro;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -29,7 +37,16 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function cadastrarQuiz(score,idUsuario) {
+     var instrucaoSql = `INSERT INTO Quiz (score, fkUsuario) VALUES 
+     (${score}, ${idUsuario})     
+     `
+     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
+    cadastrarQuiz,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
 }

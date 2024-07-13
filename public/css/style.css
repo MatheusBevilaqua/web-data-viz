@@ -1,0 +1,140 @@
+body {
+    color: #F6EEDF;
+    background-color: #1C4D27;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+
+/* cor para a palavra SOCIEDADE*/
+.verde {
+    color: #7B967E;
+}
+
+/* cor para a palavra PALMEIRAS*/
+.vermelho {
+    color: red;
+}
+
+/*/* Reset básico para remover margens e padding padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para o elemento <nav> */
+nav {
+    background-color: #7B967E; /* Cor de fundo */
+    padding: 1em; /* Espaçamento interno */
+    display: flex; /* Exibe os itens em linha */
+    align-items: center; /* Alinha itens verticalmente ao centro */
+    justify-content: space-evenly; /* Espaça itens nas extremidades */
+}
+
+/* Estilos para a imagem logo */
+.logo-central {
+    height: 80px; /* Ajusta a altura da imagem */
+}
+
+/* Estilo para a imagem inicial */
+.endric-inicial {
+    height: 30px;
+    width: 30px;
+}
+
+/* Estilo para o butão */
+.cssbuttons-io-button {
+    background: #F6EEDF;
+    color: black;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #93cc4c;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #93d38e;
+    right: 0.3em;
+    transition: all 2s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #55b952;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  
+/* Estilos para a lista de navegação */
+nav ul {
+    list-style-type: none; /* Remove marcadores da lista */
+    display: flex; /* Exibe os itens da lista em linha */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+/* Estilos para os itens da lista */
+nav ul li {
+    margin: 0 10px; /* Espaçamento entre os itens */
+}
+
+/* Estilos para os links de navegação */
+nav ul li a {
+    color: #F6EEDF; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    padding: 0.5em 1em; /* Espaçamento interno dos links */
+    border-radius: 4px; /* Arredonda os cantos */
+    transition: background-color 0.8s; /* Transição suave para a cor de fundo */
+}
+
+/* Estilos para os links ao passar o mouse */
+nav ul li a:hover {
+    background-color: #1C4D27; /* Cor de fundo ao passar o mouse */
+}
+
+/* Centralizar e alinhar à direita o conteúdo da classe .content */
+.content {
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo verticalmente */
+    align-items: flex-end; /* Alinha o conteúdo à direita */
+    justify-content: center; /* Centraliza verticalmente */
+    height: calc(100vh - 60px); /* Ocupa a altura total da viewport menos a altura do nav */
+    padding: 20px; /* Espaçamento interno */
+    text-align: right; /* Alinha o texto à direita */
+    width: 100%; /* Define uma largura específica para a caixa de texto */
+    text-align: right; /* Alinha o texto à direita */
+}
+
+.content h1, .content h4 {
+    margin: 10px 0; /* Espaçamento entre o título e o parágrafo */
+}

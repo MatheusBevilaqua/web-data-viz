@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALMAGRIBE | RESULTADOS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #006633; /* Verde Palmeiras */
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: 2em;
+        color: #FFFFFF; /* Branco Palmeiras */
+    }
+
+    #chartContainer {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #FFFFFF; /* Fundo branco */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    canvas {
+        display: block;
+        margin: 0 auto;
+        background-color: #FFFFFF; /* Fundo branco */
+    }
+</style>
+
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <ul>
+                    <li>
+                        <a href="mural.html">O QUE ME TORNA PALMEIRENSE</a>
+                    </li>
+                </ul>
+                <ul><li>
+                    <a href="dashboard.html">HISTORIA DA S.E.P</a>
+                </li></ul>
+                <ul><li>
+                    <a href="sobremim.html">SOBRE MIM</a>
+                </li></ul>
+                <ul><li>
+                    <a href="cards.html">PORQUE PALMEIRAS</a>
+                </li></ul>
+                <ul><li>
+                    <a href="quiz.html">QUIZ</a>
+                </li></ul>
+                <ul><li>
+                    <a href="../index.html">SAIR</a>
+                </li></ul>
+            </nav>
+        </div>
+    </header>
+    
+    <canvas id="myChartCanvas"></canvas>
+</body>
+
+</html>
+
+<script>
+    obterDadosGrafico()
+    function obterDadosGrafico() {
+        
+        fetch(`/medidas/ultimas`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta) {
+    console.log('iniciando plotagem do gráfico...');
+
+    // Criando estrutura para plotar gráfico - labels e dados
+    let labels = [];
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: 'Valores',
+            data: [],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+
+    console.log('----------------------------------------------');
+    console.log('Estes dados foram recebidos pela função "plotarGrafico":');
+    console.log(resposta);
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (let chave in resposta[0]) {
+        labels.push(chave);
+        dados.datasets[0].data.push(resposta[0][chave]);
+    }
+
+    console.log('----------------------------------------------');
+    console.log('O gráfico será plotado com os respectivos valores:');
+    console.log('Labels:');
+    console.log(labels);
+    console.log('Dados:');
+    console.log(dados.datasets[0].data);
+    console.log('----------------------------------------------');
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+        type: 'bar',
+        data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+        document.getElementById('myChartCanvas'),
+        config
+    );
+}
+
+
+</script>

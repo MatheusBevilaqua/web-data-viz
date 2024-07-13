@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    background-color: #7B967E;
+}
+
+.header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav ul li {
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    color: #F6EEDF;
+    text-decoration: none;
+}
+
+.header1 {
+    background-color: #1C4D27;
+    color: #F6EEDF;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1C4D27;
+    margin-bottom: 10px;
+}
+
+.details, .hobbies, .contact {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #e6e6e6;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+a {
+    color: #1C4D27;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

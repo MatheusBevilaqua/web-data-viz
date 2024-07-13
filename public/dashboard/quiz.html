@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz do Palmeiras</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+         <nav class="nav">
+            <ul>
+                <li>
+                    <a href="mural.html">O QUE ME TORNA PALMEIRENSE</a>
+                </li>
+            </ul>
+            <ul><li>
+                    <a href="dashboard.html">HISTORIA DA S.E.P</a>
+            </li></ul>
+            <ul><li>
+                    <a href="sobremim.html">SOBRE MIM</a>
+            </li></ul>
+            <ul><li>
+                    <a href="cards.html">PORQUE PALMEIRAS</a>
+            </li></ul>
+            <ul><li>
+                    <a href="../index.html">SAIR</a>
+            </li></ul>
+            <ul><li>
+                <a href="grafico.html">RESULTADOS</a>
+            </li></ul>
+        </nav>
+        </div>
+        </header>
+
+    
+        <h1>Quiz do Palmeiras</h1>
+    
+    <div class="quiz-container">
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. Em que ano o Palmeiras foi fundado?</p>
+                <label><input type="radio" name="q1" value="1910"> 1910</label><br>
+                <label><input type="radio" name="q1" value="1914"> 1914</label><br>
+                <label><input type="radio" name="q1" value="1922"> 1922</label><br>
+                <label><input type="radio" name="q1" value="1942"> 1942</label>
+            </div>
+            <div class="question">
+                <p>2. Qual o nome original do Palmeiras?</p>
+                <label><input type="radio" name="q2" value="Palmeiras Italia"> Palmeiras Italia</label><br>
+                <label><input type="radio" name="q2" value="Palestra São Paulo"> Palestra São Paulo</label><br>
+                <label><input type="radio" name="q2" value="Palestra Italia"> Palestra Italia</label><br>
+                <label><input type="radio" name="q2" value="Sociedade Esportiva Palmeiras"> Sociedade Esportiva Palmeiras</label>
+            </div>
+            <div class="question">
+                <p>3. Em que ano o Palmeiras conquistou sua primeira Copa Libertadores?</p>
+                <label><input type="radio" name="q3" value="1993"> 1993</label><br>
+                <label><input type="radio" name="q3" value="1999"> 1999</label><br>
+                <label><input type="radio" name="q3" value="2020"> 2020</label><br>
+                <label><input type="radio" name="q3" value="2021"> 2021</label>
+            </div>
+            <div class="question">
+                <p>4. Qual é o nome do estádio do Palmeiras?</p>
+                <label><input type="radio" name="q4" value="Morumbi"> Morumbi</label><br>
+                <label><input type="radio" name="q4" value="Maracanã"> Maracanã</label><br>
+                <label><input type="radio" name="q4" value="Pacaembu"> Pacaembu</label><br>
+                <label><input type="radio" name="q4" value="Allianz Parque"> Allianz Parque</label>
+            </div>
+            <button type="button" onclick="checkAnswers()">Enviar Respostas</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+<script>
+    function checkAnswers() {
+    const answers = {
+        q1: '1914',
+        q2: 'Palestra Italia',
+        q3: '1999',
+        q4: 'Allianz Parque'
+    };
+
+    let score = 0;
+
+    for (const [question, answer] of Object.entries(answers)) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedOption && selectedOption.value === answer) {
+            score++;
+        }
+    }
+
+    const result = document.getElementById('result');
+    result.textContent = `Você acertou ${score} de ${Object.keys(answers).length} perguntas.`;
+
+    fetch("/medidas/pergunta", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        scoreServer:score, 
+        idUsuarioServer:sessionStorage.ID_USUARIO 
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
+
+</script>

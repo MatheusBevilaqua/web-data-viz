@@ -2,12 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="../../assets/palmeiras-1.svg" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>Palmagribe | Porque Palmeiras</title>
 
+    <link rel="icon" href="assets/palmeiras-1.svg" />
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -21,100 +22,62 @@
 </head>
 
 <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <ul>
+                    <li>
+                        <a href="mural.html">O QUE ME TORNA PALMEIRENSE</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="dashboard.html">HISTORIA DA S.E.P</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="sobremim.html">SOBRE MIM</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="quiz.html">QUIZ</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="../index.html">SAIR</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="janela">
+    <div class="father-cards">
+        <div class="card-card">
+            <h1 class="titulo">PORQUE PALMEIRAS?</h1>
 
-        <div class="header-left dash-header">
+            <BR>
+            </BR>
 
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Aquários</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+            <h3 class="descri-card" style="color: #F6EEDF;">DESDE PEQUENO EU APRECIO MUITO O MUNDO DO FUTEBOL,
+                <p>E TAMBEM DESDE PEQUENO MEU PAI ME MOSTRA COMO</p>
+                <p>FUNCIONA, O QUE FAZER OU NÃO E DENTRE OUTRAS COISAS</p>
+                <p>DO FUTEBOL... O QUE ME TORNOU MAIS PROXIMO DO MEU</p>
+                <p>PAI, IRMÃO E ACABANDO ME APROXIMANDO MAIS DOS OUTROS</p>
+                <p>FAMILIARES INDIRETAMENTE</p>
+                <p>COM O TEMPO ACABEI ME APAIXONANDO CADA VEZ MAIS</p>
+                PELA INSTITUIÇÃO, CADA VEZ MAIS PROXIMO DA CAUSA PALMEIRAS,</p>
+                <p>O QUE ME FEZ UM PALMEIRENSE VERDE.</p>
+            </h3>
+            <h5 class="descri">O QUE ME FEZ FAZER ESTE SITE.</h5>
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
+        <div class="img-cards">
+            <img style="height: 35%;" src="../assets/emblemas.png" alt="emblemas">
         </div>
-
     </div>
-
 </body>
-
-<script>
-
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
-
-</script>
 
 </html>
